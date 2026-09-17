@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+/* ============================================================
+   ECO GREEN SUSTAINABILITY FOUNDATION — DESIGN SYSTEM v3
+   Green + off-white + near-black. Green is an accent, never a
+   flood fill. Near-black carries the typography; the page
+   breathes on warm off-white.
+   ============================================================ */
+@theme {
+  /* --- Green: the single accent --- */
+  --color-green-50: #E9F6EE;
+  --color-green-100: #CFEBDA;
+  --color-green-500: #16B45C;
+  --color-green-600: #0FA34B;
+  --color-green-700: #0A7C39;
+  --color-green-900: #08331C;
+
+  /* --- Ink: typography and dark surfaces --- */
+  --color-ink-950: #0B0D0C;
+  --color-ink-800: #1A1F1C;
+  --color-ink-600: #4A524D;
+  --color-ink-400: #7C857F;
+
+  /* --- Ground --- */
+  --color-paper: #F4F4F1;
+  --color-paper-2: #EBEBE6;
+  --color-surface: #FFFFFF;
+  --color-line: #E1E1DB;
+  --color-line-dark: #2A312D;
+
+  /* --- On dark --- */
+  --color-on-dark: #F4F4F1;
+  --color-on-dark-muted: #9AA39D;
+
+  /* --- Fonts --- */
+  --font-display: var(--font-sora), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+
+  /* --- Layout --- */
+  --container-page: 1320px;
+
+  /* --- Radius: generous on imagery, pill on controls --- */
+  --radius-image: 28px;
+  --radius-card: 20px;
+  --radius-chip: 999px;
+
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-paper);
+  color: var(--color-ink-950);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 2px solid var(--color-green-600);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.on-dark :where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 2px solid var(--color-on-dark);
+}
+
+/* Scroll reveal — opt-in, subtle, off entirely under reduced motion. */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

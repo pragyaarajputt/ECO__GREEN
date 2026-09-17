@@ -1,0 +1,121 @@
+import type { Metadata } from "next";
+import { Section } from "@/components/ui/Section";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { PageHero } from "@/components/sections/PageHero";
+import { PillarGrid } from "@/components/sections/PillarGrid";
+import { ImageTextSection } from "@/components/sections/ImageTextSection";
+import { CtaSection } from "@/components/sections/CtaSection";
+import { Button } from "@/components/ui/Button";
+import { Reveal } from "@/components/ui/Reveal";
+import { PageNumber } from "@/components/ui/PageNumber";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Who we are, what we believe, how we work and why it matters — Eco Green Sustainability Foundation's approach to CSR and sustainability programmes.",
+};
+
+const BELIEFS = [
+  { number: "01", title: "Communities know their own priorities", body: "A programme designed in an office and delivered to a village is a transaction. A programme designed with the village is a partnership, and it is the one still running three years later." },
+  { number: "02", title: "Measurement is not paperwork", body: "Without a baseline there is no way to show what changed. We establish the starting position before delivery begins, and agree the method in writing with the partner." },
+  { number: "03", title: "Social and environmental work belong together", body: "Water scarcity is a livelihoods problem. Waste is a health problem. Splitting CSR from sustainability makes reporting tidier and programmes weaker." },
+  { number: "04", title: "The exit is part of the design", body: "Local ownership is named in the first month, not negotiated in the last. What we build should keep working after our involvement ends." },
+];
+
+export default function AboutPage() {
+  return (
+    <>
+      <PageHero
+        number="02"
+        label="About"
+        title={<>People, planet and the work that connects them.</>}
+        lede="Eco Green Sustainability Foundation partners with businesses, communities and institutions to design and implement programmes that create measurable social impact and build environmental resilience."
+        imageNote="About — programme team in conversation with community members"
+        actions={
+          <>
+            <Button href="/partnerships" withArrow>Partner With Us</Button>
+            <Button href="/programmes" variant="outline">Our programmes</Button>
+          </>
+        }
+      />
+
+      <Section tone="paper">
+        <ImageTextSection imageNote="Who we are — field team at a programme site">
+          <div className="flex flex-col gap-7">
+            <PageNumber number="01" label="Who we are" total="04" />
+            <h2 className="m-0 max-w-[20ch] font-display text-[28px] font-bold leading-[1.1] tracking-[-0.03em] sm:text-[36px] lg:text-[44px]">
+              A foundation that works where CSR and sustainability meet.
+            </h2>
+            <p className="m-0 max-w-[58ch] text-[17px] leading-[1.75] text-ink-600 lg:text-[18px]">
+              We design and implement programmes across education, health, livelihoods, women&apos;s empowerment,
+              youth development, rural development and social inclusion — alongside climate, water, waste,
+              biodiversity and sustainable livelihoods work.
+            </p>
+            <p className="m-0 max-w-[58ch] text-[17px] leading-[1.75] text-ink-600 lg:text-[18px]">
+              We work with corporate partners meeting their CSR commitments, with institutions seeking a delivery
+              partner, and with communities defining what they actually need. Approximately 40% of our strategic focus
+              sits in sustainability, complementing the social programmes rather than sitting apart from them.
+            </p>
+          </div>
+        </ImageTextSection>
+      </Section>
+
+      <Section tone="paper2">
+        <SectionHeading
+          number="02"
+          label="What we believe"
+          title="Four convictions that shape how we work."
+          lede="Each of these changes something concrete about programme design — who decides, what gets measured, and what happens at the end."
+        />
+        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-(--radius-image) border border-line bg-line md:grid-cols-2">
+          {BELIEFS.map((b, i) => (
+            <Reveal key={b.number} delay={i * 70} className="flex flex-col gap-4 bg-surface p-8 lg:p-10">
+              <span className="tnum font-display text-[13px] font-bold text-green-600">{b.number}</span>
+              <h3 className="m-0 font-display text-[21px] font-bold leading-[1.2] tracking-[-0.025em] text-ink-950">
+                {b.title}
+              </h3>
+              <p className="m-0 text-[16px] leading-[1.7] text-ink-600">{b.body}</p>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      <Section tone="paper">
+        <SectionHeading
+          number="03"
+          label="How we work"
+          title="Inclusion, collaboration, sustainability, innovation."
+          lede="Our four operating principles, and what each means in the field rather than on a values page."
+        />
+        <PillarGrid />
+      </Section>
+
+      <Section tone="paper2">
+        <ImageTextSection imageNote="Why it matters — community members at a completed programme site" flip ratio="landscape">
+          <div className="flex flex-col gap-7">
+            <PageNumber number="04" label="Why it matters" total="04" />
+            <h2 className="m-0 max-w-[20ch] font-display text-[28px] font-bold leading-[1.1] tracking-[-0.03em] sm:text-[36px] lg:text-[44px]">
+              Corporate responsibility spending only counts if something changes.
+            </h2>
+            <p className="m-0 max-w-[58ch] text-[17px] leading-[1.75] text-ink-600 lg:text-[18px]">
+              Considerable resources flow into community development every year. A great deal of it is reported as
+              activity — sessions held, materials distributed, saplings planted — because activity is easy to count and
+              requires nothing to have been measured beforehand.
+            </p>
+            <p className="m-0 max-w-[58ch] text-[17px] leading-[1.75] text-ink-600 lg:text-[18px]">
+              We exist to close that gap: to design programmes against assessed need, measure them against a real
+              baseline, and report honestly on what worked and what did not.
+            </p>
+          </div>
+        </ImageTextSection>
+      </Section>
+
+      <CtaSection
+        title="Let's create meaningful impact together."
+        body="Tell us what you are trying to achieve and where. We will be straightforward about what is deliverable."
+        secondaryHref="/reports"
+        secondaryLabel="Transparency & reports"
+      />
+    </>
+  );
+}
