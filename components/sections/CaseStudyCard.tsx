@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { LeafMark } from "@/components/ui/Leaf";
 import type { CaseStudy } from "@/lib/types";
 
 export function CaseStudyCard({ study }: { study: CaseStudy }) {
@@ -14,10 +15,10 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
   return (
     <Link
       href={`/projects/${study.slug}`}
-      className="group flex h-full flex-col overflow-hidden rounded-(--radius-image) border border-line bg-surface transition-colors duration-300 hover:border-green-600"
+      className="card-lift group flex h-full flex-col rounded-(--radius-image) border border-line/80 bg-surface shadow-rest hover:border-green-600 focus-visible:border-green-600"
     >
-      <div className="overflow-hidden">
-        <div className="transition-transform duration-500 group-hover:scale-[1.03]">
+      <div className="overflow-hidden rounded-t-[27px]">
+        <div className="card-zoom">
           <ImagePlaceholder note={study.imageNote} ratio="wide" rounded="none" className="border-0" />
         </div>
       </div>
@@ -34,14 +35,15 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
             </div>
           ))}
         </dl>
-        <span className="mt-auto inline-flex items-center gap-2 pt-3 text-[14px] font-semibold text-ink-950">
-          <span className="border-b-2 border-green-600 pb-0.5">View case study</span>
+        <span className="mt-auto flex items-center gap-2 pt-3 text-[14px] font-semibold text-ink-950">
+          <span className="link-grow">View case study</span>
           <ArrowUpRight
             size={15}
             strokeWidth={2.2}
             aria-hidden="true"
-            className="text-green-600 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            className="card-icon text-green-600"
           />
+          <LeafMark className="card-leaf ml-auto size-5 text-green-600" />
         </span>
       </div>
     </Link>

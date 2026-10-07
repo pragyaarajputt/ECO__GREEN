@@ -1,4 +1,4 @@
-import { Reveal } from "@/components/ui/Reveal";
+import { Reveal, STAGGER_MS } from "@/components/ui/Reveal";
 import type { ProcessStep } from "@/lib/types";
 
 /**
@@ -10,7 +10,7 @@ export function ProcessTimeline({ steps, tone = "light" }: { steps: ProcessStep[
   return (
     <ol className="m-0 grid list-none grid-cols-1 gap-y-10 p-0 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8">
       {steps.map((s, i) => (
-        <Reveal as="li" key={s.number} delay={i * 70} className="flex flex-col gap-4">
+        <Reveal as="li" key={s.number} delay={i * STAGGER_MS} className="flex flex-col gap-4">
           <div className="flex items-center gap-4">
             <span
               className={`tnum flex size-11 flex-none items-center justify-center rounded-full font-display text-[14px] font-bold ${

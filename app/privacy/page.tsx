@@ -49,7 +49,7 @@ export default function Page() {
       label="Privacy"
       title="How we handle your data."
       updated="Last reviewed September 2026"
-      imageNote="Privacy \u2014 data handling and records"
+      imageNote="Privacy — data handling and records"
       sections={SECTIONS}
     />
   );

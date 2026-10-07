@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
-import { Sora, Inter } from "next/font/google";
+import { Montserrat, Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SITE } from "@/data/site";
 import "./globals.css";
 
-/** Sora carries the display voice; Inter handles everything readable. */
-const sora = Sora({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-sora", display: "swap" });
+/** Montserrat echoes the geometric logo wordmark; Inter handles everything readable. */
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  style: ["normal", "italic"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
 const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = {
@@ -35,7 +41,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="en-IN" className={`${sora.variable} ${inter.variable}`}>
+    <html lang="en-IN" className={`${montserrat.variable} ${inter.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Lets CSS hide entrance-animated content only when JavaScript is running */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body className="font-sans">
         <a
           href="#main"

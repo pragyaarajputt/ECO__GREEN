@@ -24,7 +24,7 @@ export function Section({
   className?: string;
   size?: "sm" | "md" | "lg";
 }) {
-  const pad = size === "sm" ? "py-14 lg:py-20" : size === "lg" ? "py-20 lg:py-36" : "py-16 lg:py-28";
+  const pad = size === "sm" ? "py-section-sm" : size === "lg" ? "py-section-lg" : "py-section";
   return (
     <section id={id} className={`scroll-mt-24 ${pad} ${BG[tone]} ${className}`}>
       <Container>{children}</Container>

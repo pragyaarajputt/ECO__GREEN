@@ -43,7 +43,7 @@ export default function Page() {
       label="Accessibility"
       title="This site should work for everyone."
       updated="Last reviewed September 2026"
-      imageNote="Accessibility \u2014 inclusive design"
+      imageNote="Accessibility — inclusive design"
       sections={SECTIONS}
     />
   );

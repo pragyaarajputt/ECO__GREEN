@@ -23,7 +23,10 @@ export function PageNumber({
         {number}
         {total && <span className={dark ? "text-on-dark-muted" : "text-ink-400"}>{` / ${total}`}</span>}
       </span>
-      <span aria-hidden="true" className={`h-px w-8 ${dark ? "bg-on-dark-muted/40" : "bg-line"}`} />
+      <span
+        aria-hidden="true"
+        className={`grow-line h-0.5 w-10 rounded-full bg-linear-to-r ${dark ? "from-green-500 to-teal-500" : "from-green-600 to-teal-600"}`}
+      />
       {label && (
         <span
           className={`text-[12px] font-semibold uppercase tracking-[0.14em] ${dark ? "text-on-dark-muted" : "text-ink-400"}`}

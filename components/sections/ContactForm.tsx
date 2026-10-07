@@ -16,8 +16,8 @@ const AREAS = [
 ];
 
 const input =
-  "min-h-13 w-full rounded-(--radius-chip) border border-line bg-surface px-5 text-[15px] text-ink-950 placeholder:text-ink-400 transition-colors focus:border-green-600";
-const labelCls = "text-[12px] font-semibold uppercase tracking-[0.12em] text-ink-400";
+  "min-h-13 w-full rounded-(--radius-chip) border border-line-strong bg-surface px-5 text-[15px] text-ink-950 placeholder:text-ink-400 transition-[border-color,box-shadow] hover:border-ink-600 focus:border-green-600 focus:shadow-[0_0_0_4px_rgb(46_125_30/0.15)]";
+const labelCls = "text-[12px] font-semibold uppercase tracking-[0.12em] text-ink-600";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -60,7 +60,7 @@ export function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-6 rounded-(--radius-image) border border-line bg-paper-2 p-6 sm:p-8 lg:p-10"
+      className="flex flex-col gap-6 rounded-(--radius-image) border border-line/80 bg-surface p-6 shadow-rest sm:p-8 lg:p-10"
     >
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
         <label className="flex flex-col gap-2.5">
@@ -91,7 +91,7 @@ export function ContactForm() {
 
       <label className="flex flex-col gap-2.5">
         <span className={labelCls}>Area of interest</span>
-        <select name="area" className={`${input} appearance-none`} defaultValue={AREAS[0]}>
+        <select name="area" className={`${input} appearance-none bg-[url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2716%27 height=%2716%27 fill=%27none%27 stroke=%27%23002A49%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27m4 6 4 4 4-4%27/%3E%3C/svg%3E")] bg-position-[right_1.25rem_center] bg-no-repeat pr-12`} defaultValue={AREAS[0]}>
           {AREAS.map((a) => (
             <option key={a}>{a}</option>
           ))}
@@ -105,7 +105,7 @@ export function ContactForm() {
           rows={5}
           required
           placeholder="Tell us about your CSR or sustainability requirement"
-          className="w-full resize-y rounded-(--radius-card) border border-line bg-surface p-5 text-[15px] leading-[1.6] text-ink-950 placeholder:text-ink-400 transition-colors focus:border-green-600"
+          className="w-full resize-y rounded-(--radius-card) border border-line-strong bg-surface p-5 text-[15px] leading-[1.6] text-ink-950 placeholder:text-ink-400 transition-[border-color,box-shadow] hover:border-ink-600 focus:border-green-600 focus:shadow-[0_0_0_4px_rgb(46_125_30/0.15)]"
         />
       </label>
 
@@ -130,7 +130,7 @@ export function ContactForm() {
         />
       </button>
 
-      <p aria-live="polite" className="m-0 text-[14px] leading-[1.6] text-ink-400">
+      <p aria-live="polite" className={`m-0 text-[14px] leading-[1.6] ${status === "error" ? "font-semibold text-danger" : "text-ink-600"}`}>
         {status === "error"
           ? "Something went wrong. Please try again."
           : "We respond to every enquiry. Your details are used only to reply to you."}

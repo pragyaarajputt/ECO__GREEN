@@ -41,7 +41,7 @@ export default function Page() {
       label="Terms"
       title="Terms governing this website."
       updated="Last reviewed September 2026"
-      imageNote="Terms \u2014 website use"
+      imageNote="Terms — website use"
       sections={SECTIONS}
     />
   );

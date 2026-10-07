@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/Container";
 import { PageNumber } from "@/components/ui/PageNumber";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { LeafDrift } from "@/components/ui/Leaf";
 
 export function CtaSection({
   number = "11",
@@ -23,8 +24,9 @@ export function CtaSection({
   secondaryLabel?: string;
 }) {
   return (
-    <section className="on-dark bg-green-900 py-20 text-on-dark lg:py-32">
-      <Container>
+    <section className="on-dark relative overflow-hidden bg-brand-band py-section-lg text-on-dark">
+      <LeafDrift />
+      <Container className="relative">
         <Reveal>
           <div className="flex flex-col gap-8">
             <PageNumber number={number} label={label} tone="dark" />

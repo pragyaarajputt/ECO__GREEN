@@ -20,14 +20,12 @@ export function TextLink({
         tone === "dark" ? "text-on-dark" : "text-ink-950"
       } ${className}`}
     >
-      <span className="border-b-2 border-green-600 pb-0.5 transition-colors duration-200 group-hover:border-green-700">
-        {children}
-      </span>
+      <span className="link-grow">{children}</span>
       <ArrowRight
         size={16}
         strokeWidth={2}
         aria-hidden="true"
-        className="text-green-600 transition-transform duration-200 group-hover:translate-x-1"
+        className={`transition-transform duration-300 ease-organic group-hover:translate-x-1 group-focus-visible:translate-x-1 ${tone === "dark" ? "text-green-500" : "text-green-600"}`}
       />
     </Link>
   );

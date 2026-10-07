@@ -55,11 +55,11 @@ export function ImpactStat({
   const figure = display === null ? "XX+" : `${display.toLocaleString("en-IN")}${metric.suffix ?? "+"}`;
 
   return (
-    <div ref={ref} className={`flex flex-col gap-3 border-t pt-5 lg:pt-6 ${dark ? "border-line-dark" : "border-line"}`}>
+    <div ref={ref} className={`flex flex-col gap-3 border-t pt-5 lg:pt-6 ${dark ? "border-white/15" : "border-line"}`}>
       <span
         className={`tnum m-0 font-display font-bold leading-[0.9] tracking-[-0.04em] ${
           size === "lg" ? "text-[38px] sm:text-[52px] lg:text-[72px]" : "text-[32px] sm:text-[42px] lg:text-[56px]"
-        } ${display === null ? (dark ? "text-on-dark-muted/50" : "text-ink-400/60") : "text-green-600"}`}
+        } ${display === null ? (dark ? "text-green-500/70" : "text-ink-400/60") : dark ? "text-green-500" : "text-green-600"}`}
       >
         {figure}
       </span>

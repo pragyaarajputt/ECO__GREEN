@@ -1,39 +1,50 @@
 @import "tailwindcss";
 
 /* ============================================================
-   ECO GREEN SUSTAINABILITY FOUNDATION — DESIGN SYSTEM v3
-   Green + off-white + near-black. Green is an accent, never a
-   flood fill. Near-black carries the typography; the page
-   breathes on warm off-white.
+   ECO GREEN FOUNDATION — DESIGN SYSTEM v4 (brand-aligned)
+   Every value is sampled from the Human & Leaf logo:
+   navy crescent + wordmark, teal figure, green leaf, lime tip.
+   Navy carries the typography and dark surfaces; green is the
+   action colour; lime and teal are small accents, mostly on
+   navy. Full rationale: .superdesign/design-system.md
    ============================================================ */
 @theme {
-  /* --- Green: the single accent --- */
-  --color-green-50: #E9F6EE;
-  --color-green-100: #CFEBDA;
-  --color-green-500: #16B45C;
-  --color-green-600: #0FA34B;
-  --color-green-700: #0A7C39;
-  --color-green-900: #08331C;
+  /* --- Green: the leaf and the GREEN wordmark (#306F1B) --- */
+  --color-green-50: #EEF5E8;
+  --color-green-100: #D9EBC9;
+  --color-green-500: #92C60C; /* leaf tip — accents on navy only */
+  --color-green-600: #2E7D1E; /* actions; 5.2:1 with white text */
+  --color-green-700: #23611A; /* hover / pressed */
+  --color-green-900: #0F3B22; /* deep leaf base */
 
-  /* --- Ink: typography and dark surfaces --- */
-  --color-ink-950: #0B0D0C;
-  --color-ink-800: #1A1F1C;
-  --color-ink-600: #4A524D;
-  --color-ink-400: #7C857F;
+  /* --- Teal: the figure, the bridge between navy and green --- */
+  --color-teal-500: #2AA3AE;
+  --color-teal-600: #01818D;
 
-  /* --- Ground --- */
-  --color-paper: #F4F4F1;
-  --color-paper-2: #EBEBE6;
+  /* --- Ink: the navy crescent and ECO wordmark (#002A49) --- */
+  --color-ink-950: #002A49;
+  --color-ink-900: #00375D;
+  --color-ink-800: #0B4466;
+  --color-ink-600: #3D5568; /* body copy, 7:1 on paper */
+  --color-ink-400: #5B6E7F; /* labels, 4.7:1 on paper */
+
+  /* --- Ground: a faintly green-tinted white --- */
+  --color-paper: #F5F7F2;
+  --color-paper-2: #E9EFE4;
   --color-surface: #FFFFFF;
-  --color-line: #E1E1DB;
-  --color-line-dark: #2A312D;
+  --color-line: #DAE2D5;
+  --color-line-strong: #8FA39A; /* form boundaries, 3:1 on white */
+  --color-line-dark: #1C4767;
 
-  /* --- On dark --- */
-  --color-on-dark: #F4F4F1;
-  --color-on-dark-muted: #9AA39D;
+  /* --- On navy --- */
+  --color-on-dark: #F5F7F2;
+  --color-on-dark-muted: #A9BCCB;
 
-  /* --- Fonts --- */
-  --font-display: var(--font-sora), system-ui, sans-serif;
+  /* --- Status --- */
+  --color-danger: #B42318;
+
+  /* --- Fonts: Montserrat echoes the geometric wordmark --- */
+  --font-display: var(--font-montserrat), system-ui, sans-serif;
   --font-sans: var(--font-inter), system-ui, sans-serif;
 
   /* --- Layout --- */
@@ -44,6 +55,47 @@
   --radius-card: 20px;
   --radius-chip: 999px;
 
+  /* --- Type scale: fluid between 375px and 1440px. Two families only. --- */
+  --text-display: clamp(2.75rem, 1.65rem + 4.7vw, 6rem); /* 44 → 94, home hero */
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.04em;
+  --text-h1: clamp(2.25rem, 1.55rem + 3vw, 4.25rem); /* 36 → 68, page heroes */
+  --text-h1--line-height: 1.04;
+  --text-h1--letter-spacing: -0.035em;
+  --text-h2: clamp(1.875rem, 1.4rem + 2vw, 3.25rem); /* 30 → 52, section headings */
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.03em;
+  --text-h3: clamp(1.25rem, 1.12rem + 0.55vw, 1.5rem); /* 20 → 24, card titles */
+  --text-h3--line-height: 1.2;
+  --text-h3--letter-spacing: -0.02em;
+  --text-lede: clamp(1.0625rem, 0.98rem + 0.35vw, 1.25rem); /* 17 → 20 */
+  --text-lede--line-height: 1.65;
+  --text-body: 1.0625rem; /* 17 */
+  --text-body--line-height: 1.7;
+  --text-eyebrow: 0.75rem; /* 12, uppercase labels */
+  --text-eyebrow--line-height: 1.4;
+  --text-eyebrow--letter-spacing: 0.16em;
+
+  /* --- Elevation: soft, layered, navy-tinted --- */
+  --shadow-card: 0 1px 2px rgb(0 42 73 / 0.04), 0 12px 32px -12px rgb(0 42 73 / 0.18);
+  --shadow-rest: 0 1px 2px rgb(0 42 73 / 0.05), 0 10px 30px -16px rgb(0 42 73 / 0.16);
+  --shadow-cta: 0 12px 28px -12px rgb(46 125 30 / 0.65), inset 0 1px 0 rgb(255 255 255 / 0.18);
+
+  /* --- Spacing ---
+     Everything else uses Tailwind's 4px scale, kept to the steps
+     4 / 8 / 16 / 24 / 32 / 48 / 64 / 96 (1, 2, 4, 6, 8, 12, 16, 24).
+     Section rhythm is fluid between a 375px and a 1440px viewport, so
+     every section steps the same way instead of jumping at breakpoints.
+     Use as py-section, py-section-sm, pt-hero-top, etc. */
+  --spacing-section-sm: clamp(3.5rem, 2.97rem + 2.25vw, 5rem); /* 56 → 80 */
+  --spacing-section: clamp(4rem, 2.95rem + 4.5vw, 7rem); /* 64 → 112 */
+  --spacing-section-lg: clamp(5rem, 3.95rem + 4.5vw, 8rem); /* 80 → 128 */
+  --spacing-hero-top: clamp(2rem, 1.3rem + 3vw, 4rem); /* 32 → 64 */
+  --spacing-hero-bottom: clamp(3.5rem, 2.62rem + 3.75vw, 6rem); /* 56 → 96 */
+
+  /* --- Motion: calm and organic, like growth and breeze --- */
+  --ease-organic: cubic-bezier(0.22, 1, 0.36, 1);
+
   --breakpoint-sm: 480px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
@@ -51,24 +103,51 @@
   --breakpoint-2xl: 1440px;
 }
 
-html {
-  scroll-behavior: smooth;
+:root {
+  --motion-fast: 150ms; /* colour, press feedback */
+  --motion-base: 300ms; /* hover lift, icons, underlines */
+  --motion-slow: 600ms; /* entrances, image zoom */
+  --motion-stagger: 70ms; /* gap between siblings entering */
+  --motion-rise: 20px; /* entrance travel */
+  --motion-lift: -5px; /* card hover lift */
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--color-paper);
-  color: var(--color-ink-950);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  overflow-x: hidden;
-}
+/* Base rules sit in the base layer so Tailwind utilities (text-white on
+   buttons, etc.) can override them; unlayered rules would always win. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-paper);
+    color: var(--color-ink-950);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Comfortable measure: at most about 72 characters per line. A max-w-* utility can override it. */
+  main p {
+    max-width: 62ch;
+  }
+
+  /* Focus: the outline follows each element's own radius (cards stay rounded). */
+  :where(a, button, input, select, textarea, summary):focus-visible {
+    outline: 3px solid var(--color-teal-600);
+    outline-offset: 3px;
+  }
+  .on-dark :where(a, button, input, select, textarea, summary):focus-visible {
+    outline-color: var(--color-green-500);
+  }
 }
 
 .tnum {
@@ -76,42 +155,226 @@ a {
   font-feature-settings: "tnum";
 }
 
-:where(a, button, input, select, textarea, summary):focus-visible {
-  outline: 2px solid var(--color-green-600);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
-.on-dark :where(a, button, input, select, textarea, summary):focus-visible {
-  outline: 2px solid var(--color-on-dark);
+::selection {
+  background: var(--color-green-100);
+  color: var(--color-ink-950);
 }
 
-/* Scroll reveal — opt-in, subtle, off entirely under reduced motion. */
-.reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+/* Brand gradient: the logo's leaf, from navy base to lime tip. */
+.bg-brand-band {
+  background:
+    radial-gradient(120% 140% at 100% 0%, rgb(146 198 12 / 0.16), transparent 55%),
+    linear-gradient(135deg, var(--color-ink-950) 0%, var(--color-ink-900) 55%, var(--color-green-900) 100%);
 }
-.reveal.is-visible {
+
+/* Organic shapes from the logo: a leaf has two opposite corners drawn
+   long and two held tight. "-alt" mirrors it. */
+.shape-leaf {
+  border-radius: 46% 28px 46% 28px / 38% 28px 38% 28px;
+}
+.shape-leaf-alt {
+  border-radius: 28px 46% 28px 46% / 28px 38% 28px 38%;
+}
+
+/* Soft dotted texture for tinted bands (no image request). */
+.bg-dots {
+  background-image: radial-gradient(rgb(46 125 30 / 0.12) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+
+/* ============================================================
+   MOTION SYSTEM
+   Transform and opacity only. Content is hidden for an entrance
+   only once JavaScript is running (html.js), so a failed script
+   never hides content.
+   ============================================================ */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--motion-rise), 0);
+  }
+}
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes leaf-sway {
+  from {
+    transform: translate3d(0, 0, 0) rotate(-4deg);
+  }
+  to {
+    transform: translate3d(12px, -16px, 0) rotate(6deg);
+  }
+}
+
+/* Scroll reveal: fade and rise once, on first entry. */
+.reveal,
+.stagger > * {
+  transition:
+    opacity var(--motion-slow) var(--ease-organic),
+    transform var(--motion-slow) var(--ease-organic);
+}
+.js .reveal:not(.is-visible),
+.js .stagger:not(.is-visible) > * {
+  opacity: 0;
+  transform: translate3d(0, var(--motion-rise), 0);
+}
+/* Card grids: siblings follow one another in. */
+.stagger > * {
+  transition-delay: calc(var(--i, 0) * var(--motion-stagger));
+}
+
+/* Hero: heading, text and actions rise in sequence on load (pure CSS, no waiting on JavaScript). */
+.hero-seq > * {
+  animation: rise-in var(--motion-slow) var(--ease-organic) both;
+}
+.hero-seq > :nth-child(2) { animation-delay: calc(1 * var(--motion-stagger)); }
+.hero-seq > :nth-child(3) { animation-delay: calc(2 * var(--motion-stagger)); }
+.hero-seq > :nth-child(4) { animation-delay: calc(3 * var(--motion-stagger)); }
+.hero-seq > :nth-child(5) { animation-delay: calc(4 * var(--motion-stagger)); }
+
+/* Section marker accent: a leaf-vein line that grows from the left. */
+.grow-line {
+  transform-origin: left center;
+  transition: transform var(--motion-slow) var(--ease-organic) 180ms;
+}
+.js .reveal:not(.is-visible) .grow-line {
+  transform: scaleX(0);
+}
+.hero-seq .grow-line {
+  animation: grow-x var(--motion-slow) var(--ease-organic) 200ms both;
+}
+
+/* Background leaves: very slow sway, low opacity, decorative only. */
+.leaf-drift {
+  transform-origin: 50% 90%;
+  animation: leaf-sway 16s ease-in-out infinite alternate;
+}
+
+/* Underline that grows from the left over a faint resting line. */
+.link-grow {
+  position: relative;
+  padding-bottom: 2px;
+}
+.link-grow::before,
+.link-grow::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -1px 0;
+  height: 2px;
+  border-radius: 2px;
+}
+.link-grow::before {
+  background: rgb(46 125 30 / 0.35);
+}
+.link-grow::after {
+  background: var(--color-green-600);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--motion-base) var(--ease-organic);
+}
+.on-dark .link-grow::before {
+  background: rgb(146 198 12 / 0.35);
+}
+.on-dark .link-grow::after {
+  background: var(--color-green-500);
+}
+a:is(:hover, :focus-visible) .link-grow::after {
+  transform: scaleX(1);
+}
+
+/* Cards: lift, green-tinted shadow (fading in on a pseudo-element), image zoom, icon sprout, leaf corner.
+   Keyboard focus gets exactly what hover gets. */
+.card-lift {
+  position: relative;
+  transition:
+    transform var(--motion-base) var(--ease-organic),
+    border-color var(--motion-base) ease;
+}
+.card-lift::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow:
+    0 24px 48px -22px rgb(46 125 30 / 0.42),
+    0 6px 14px -8px rgb(0 42 73 / 0.14);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-base) var(--ease-organic);
+}
+.card-lift:is(:hover, :focus-visible) {
+  transform: translate3d(0, var(--motion-lift), 0);
+}
+.card-lift:is(:hover, :focus-visible)::after {
+  opacity: 1;
+}
+.card-lift:active {
+  transform: translate3d(0, -2px, 0);
+  transition-duration: var(--motion-fast);
+}
+.card-zoom {
+  transition: transform var(--motion-slow) var(--ease-organic);
+}
+.card-lift:is(:hover, :focus-visible) .card-zoom {
+  transform: scale(1.04);
+}
+.card-icon {
+  transform: scale(0.9);
+  transition: transform var(--motion-base) var(--ease-organic);
+}
+.card-lift:is(:hover, :focus-visible) .card-icon {
+  transform: translate3d(2px, -2px, 0) rotate(-6deg) scale(1);
+}
+.card-leaf {
+  opacity: 0;
+  transform: scale(0.6) rotate(-30deg);
+  transform-origin: 0% 100%;
+  transition:
+    opacity var(--motion-base) var(--ease-organic),
+    transform var(--motion-slow) var(--ease-organic);
+}
+.card-lift:is(:hover, :focus-visible) .card-leaf {
   opacity: 1;
   transform: none;
 }
 
+/* Reduced motion: nothing moves; content is simply there. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
+  .reveal,
+  .stagger > *,
+  .hero-seq > *,
+  .grow-line,
+  .card-lift,
+  .card-zoom,
+  .card-icon {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  .leaf-drift {
+    animation: none !important;
   }
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+@media print {
+  .reveal,
+  .stagger > *,
+  .hero-seq > * {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
   }
 }

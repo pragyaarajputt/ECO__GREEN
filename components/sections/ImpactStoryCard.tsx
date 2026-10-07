@@ -23,7 +23,7 @@ export function ImpactStoryCard({
     <Reveal
       as="article"
       delay={delay}
-      className="flex h-full flex-col overflow-hidden rounded-(--radius-image) border border-line bg-surface"
+      className="flex h-full flex-col overflow-hidden rounded-(--radius-image) border border-line/80 bg-surface shadow-rest"
     >
       <ImagePlaceholder note={imageNote} ratio="landscape" rounded="none" className="border-0 border-b border-line" />
       <div className="flex flex-1 flex-col gap-5 p-6 lg:p-7">

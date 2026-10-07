@@ -3,7 +3,7 @@ import type { NavLink, FooterColumn, Registration } from "@/lib/types";
 export const SITE = {
   name: "Eco Green Sustainability Foundation",
   shortName: "Eco Green",
-  tagline: "People. Planet. Impact.",
+  tagline: "People. Planet. Prosperity.",
   positioning:
     "We partner with businesses, communities and institutions to create measurable social impact and build a more sustainable future.",
   url: "https://ecogreenfoundation.org",
